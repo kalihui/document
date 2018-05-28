@@ -1,0 +1,24 @@
+SAM文件map结果是类似下面的东西：
+
+HWI-ST1001:137:C12FPACXX:7:1115:14131:66670     0       chr1    12805   1       42M4I5M *       0       0       TTGGATGCCCCTCCACACCCTCTTGATCTTCCCTGTGATGTCACCAATATG     CCCFFFFFHHGHHJJJJJHJJJJJJJJJJJJJJJJIJJJJJJJJJJJJIJJ     AS:i:-28        XN:i:0  XM:i:2  XO:i:1XG:i:4   NM:i:6  MD:Z:2C41C2     YT:Z:UU NH:i:3  CC:Z:chr15      CP:i:102518319  XS:A:+  HI:i:0
+ 
+HWI-ST1001:137:C12FPACXX:7:2313:17391:30032     272     chr1    13494   1       51M     *       0       0       ACTGCCTGGCGCTGTGCCCTTCCTTTGCTCTGCCCGCTGGAGACAGTGTTT     CFFFFHHJJJJIJJJJIJJJJJJJJJJJJJJJJJJJJJHHHHFA+FFFC@B     AS:i:-3 XN:i:0  XM:i:1  XO:i:0  XG:i:0NM:i:1   MD:Z:44G6       YT:Z:UU XS:A:+  NH:i:3  CC:Z:chr15      CP:i:102517626  HI:i:0
+ 
+HWI-ST1001:137:C12FPACXX:7:1109:17518:53305     16      chr1    13528   1       51M     *       0       0       CGCTGGAGCCGGTGTTTGTCATGGGCCTGGGCTGCAGGGATCCTGCTACAA     #############AB=?:*B?;A?<2+233++;A+A2+<7==@7,A<A<=>     AS:i:-5 XN:i:0  XM:i:2  XO:i:0  XG:i:0NM:i:2   MD:Z:8A21T20    YT:Z:UU XS:A:+  NH:i:4  CC:Z:chr15      CP:i:102517592  HI:i:0
+
+
+看上去很类似fastq文件，它也有read名称，序列，质量等信息，但是又不完全一样。首先，每个read只占一行，只是它被tab分成了很多列，一共有12列，分别记录了：
+
+1、read名称
+2、SAM标记
+3、chromosome
+4、5′端起始位置
+5、MAPQ（mapping quality，描述比对的质量，数字越大，特异性越高）
+6、CIGAR字串，记录插入，删除，错配以及splice junctions（后剪切拼接的接头）
+7、mate名称，记录mate pair信息
+8、mate的位置
+9、模板的长度
+10、read序列
+11、read质量
+12、程序用标记
+显然，其中chromosome至CIGAR的信息都是非常重要的。
